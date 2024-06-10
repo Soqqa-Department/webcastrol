@@ -3,17 +3,24 @@ import IconField from 'primevue/iconfield';
 import InputIcon from 'primevue/inputicon';
 import InputText from 'primevue/inputtext';
 
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 import DataContainer from '@/components/DataContainer.vue';
 import DownloadButton from "@/components/DownloadButton.vue"
 
 const searchQuery = ref('')
+const downloadLink = ref('')
+const productContainer = ref()
 
+const handleSelect = (link: string) => {
+  downloadLink.value = link
+}
 </script>
 
 <template>
-  <div class="w-full flex flex-column align-items-center text-white gap-5">
+  <div
+    class="w-full flex flex-column align-items-center text-white gap-5"
+  >
     <nav>
       <h2>{{ $t('nav.header') }}</h2>
       <IconField
@@ -28,9 +35,18 @@ const searchQuery = ref('')
       </IconField>
     </nav>
 
-    <DataContainer :query="searchQuery" />
+    <div ref="productContainer">
+      <DataContainer
+        :query="searchQuery"
+        @item-selected="handleSelect"
+      />
+    </div>
   </div>
-  <DownloadButton />
+
+  <DownloadButton
+    v-if="downloadLink"
+    :link="downloadLink"
+  />
 </template>
 
 <style scoped>

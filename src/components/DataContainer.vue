@@ -12,6 +12,7 @@ import initialData from '@/data/products.json'
 import ProductCard from '@/components/ProductCard.vue'
 
 const selectedProduct = ref()
+const emit = defineEmits(['itemSelected'])
 
 const suggestions = computed(()=>{
   if (props.query){
@@ -23,6 +24,7 @@ const suggestions = computed(()=>{
 
 const handleFocus = (item: Object) => {
   selectedProduct.value = item
+  emit('itemSelected', selectedProduct.value.pdf_link)
 }
 </script>
 

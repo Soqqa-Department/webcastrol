@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
 
+defineProps({
+  link: {
+    required: true,
+    type: String
+  }
+})
 
 </script>
 
@@ -8,9 +14,11 @@ import Button from 'primevue/button';
   <Button
     :label="$t('buttons.download')"
     class="button"
+    severity="info"
     :pt="{
       root: {class: 'border-none border-noround'}
     }"
+    @click="console.log(link)"
   />
 </template>
 
@@ -24,6 +32,17 @@ import Button from 'primevue/button';
     height: 3rem;
     font-family: "Inter var", sans-serif;
     font-weight: bold;
+    z-index: 100;
 }
 
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>
