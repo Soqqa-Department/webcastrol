@@ -4,5 +4,8 @@
         "buttons": {
             "search": "Izlash"
         }
+    },
+    "buttons": {
+        "download": "Ma'lumot olish"
     }
 }

@@ -14,15 +14,26 @@ const props = defineProps({
     }
 })
 
+import { ref } from 'vue'
+
+const product = ref()
+const emit = defineEmits(['inFocus'])
+
+const handleClick = () => {
+    emit('inFocus')
+}
+
 </script>
 
 <template>
   <div
-    class="border-1 w-9rem flex flex-column 
+    class="card border-1 w-9rem flex flex-column 
            align-items-center jusitfy-content-between
            gap-3 py-2 overflow-hidden
            border-round
            "
+    ref="product"
+    @click="handleClick"
   >
     <!-- photo container -->
     <div class="w-8rem h-10rem overflow-hidden">
@@ -43,6 +54,11 @@ const props = defineProps({
     object-fit: contain;
     width: 100%;
     height: 100%;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: .3s ease;
 }
 
 </style>

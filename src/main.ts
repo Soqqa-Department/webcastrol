@@ -2,7 +2,7 @@ import './assets/base.css'
 
 import 'primeflex/primeflex.css'
 import 'primeicons/primeicons.css'
-import 'primevue/resources/themes/lara-light-green/theme.css'
+import 'primevue/resources/themes/aura-light-green/theme.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'

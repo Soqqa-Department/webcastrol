@@ -4,5 +4,8 @@
         "buttons": {
             "search": "Искать"
         }
+    },
+    "buttons": {
+        "download": "Узнать больше"
     }
 }

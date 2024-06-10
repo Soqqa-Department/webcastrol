@@ -6,10 +6,12 @@ const props = defineProps({
     }
 })
 
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import initialData from '@/data/products.json'
 import ProductCard from '@/components/ProductCard.vue'
+
+const selectedProduct = ref()
 
 const suggestions = computed(()=>{
   if (props.query){
@@ -18,11 +20,14 @@ const suggestions = computed(()=>{
   return initialData
 })
 
+
+const handleFocus = (item: Object) => {
+  selectedProduct.value = item
+}
 </script>
 
 <template>
   <div class="flex flex-column align-items-center">
-    <p>Querry is {{ props.query }}</p>
     <div
       class="w-11 flex flex-wrap justify-content-center gap-5"
       v-auto-animate
@@ -33,6 +38,7 @@ const suggestions = computed(()=>{
         :name="item.name"
         :image="item.image"
         :file-link="item.pdf_link"
+        @in-focus="handleFocus(item)"
       />
     </div>
   </div>
