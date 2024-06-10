@@ -6,20 +6,24 @@ import InputText from 'primevue/inputtext';
 import { ref } from 'vue'
 
 import DataContainer from '@/components/DataContainer.vue';
-import DownloadButton from "@/components/DownloadButton.vue"
+import { useWebAppMainButton } from 'vue-tg'
 
 const searchQuery = ref('')
-const downloadLink = ref('')
 const productContainer = ref()
+const mainButton = useWebAppMainButton()
 
-const handleSelect = (link: string) => {
-  downloadLink.value = link
+const handleClick = (event: any) => {
+  if(event.target.ariaLabel != 'product'){
+    mainButton.hideMainButton()
+  }
 }
+
 </script>
 
 <template>
   <div
     class="w-full flex flex-column align-items-center text-white gap-5"
+    @click="handleClick"
   >
     <nav>
       <h2>{{ $t('nav.header') }}</h2>
@@ -38,15 +42,9 @@ const handleSelect = (link: string) => {
     <div ref="productContainer">
       <DataContainer
         :query="searchQuery"
-        @item-selected="handleSelect"
       />
     </div>
   </div>
-
-  <DownloadButton
-    v-if="downloadLink"
-    :link="downloadLink"
-  />
 </template>
 
 <style scoped>

@@ -22,30 +22,33 @@ const emit = defineEmits(['inFocus'])
 const handleClick = () => {
     emit('inFocus')
 }
-
 </script>
 
 <template>
-  <div
-    class="card border-1 w-9rem flex flex-column 
-           align-items-center jusitfy-content-between
-           gap-3 py-2 overflow-hidden
-           border-round
-           "
-    ref="product"
-    @click="handleClick"
-  >
-    <!-- photo container -->
-    <div class="w-8rem h-10rem overflow-hidden">
-      <img
-        :src="`/images/${props.image}`"
-        :alt="`img_${name}`"
-        class="productImage"
-      >
+  <div>
+    <div
+      class="card border-1 w-9rem flex flex-column 
+             align-items-center jusitfy-content-between
+             gap-3 py-2 overflow-hidden
+             border-round
+             "
+      ref="product"
+      @click="handleClick"
+      aria-label="product"
+    >
+      <!-- photo container -->
+      <div class="w-8rem h-10rem overflow-hidden">
+        <img
+          :src="`/images/${props.image}`"
+          :alt="`img_${name}`"
+          class="productImage"
+          aria-label="product"
+        >
+      </div>
+      <p class="m-0">
+        {{ props.name }}
+      </p>
     </div>
-    <p class="m-0">
-      {{ props.name }}
-    </p>
   </div>
 </template>
 

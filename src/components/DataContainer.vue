@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+
+import initialData from '@/data/products.json'
+import ProductCard from '@/components/ProductCard.vue'
+import { useWebAppMainButton } from 'vue-tg'
+import { useI18n } from "vue-i18n";
+
 const props = defineProps({
     query: {
         required: true,
@@ -6,13 +13,9 @@ const props = defineProps({
     }
 })
 
-import { computed, ref } from 'vue'
-
-import initialData from '@/data/products.json'
-import ProductCard from '@/components/ProductCard.vue'
-
+const { t } = useI18n();
 const selectedProduct = ref()
-const emit = defineEmits(['itemSelected'])
+const mainButton = useWebAppMainButton()
 
 const suggestions = computed(()=>{
   if (props.query){
@@ -21,11 +24,30 @@ const suggestions = computed(()=>{
   return initialData
 })
 
-
 const handleFocus = (item: Object) => {
   selectedProduct.value = item
-  emit('itemSelected', selectedProduct.value.pdf_link)
+  mainButton.setMainButtonText(t('buttons.download'))
+  mainButton.mainButtonColor.value = "#0EA5E9"
+  mainButton.showMainButton()
 }
+
+mainButton.onMainButtonClicked(()=>{
+  console.log('clicked')
+  openPdf('Alpha-SP-Range.pdf')
+})
+
+const openPdf = async (filename: string) => {
+  const pdfUrl = `https://drive.google.com/file/d/1pTBCGowqXhymWh1j7MYxNRVFee5V2xjB/view`
+
+  const link = document.createElement('a')
+  link.href = pdfUrl
+  link.download = filename
+    
+  // Программа клик по ссылке, чтобы открыть PDF
+  document.body.appendChild(link); // необходимо для Firefox
+  link.click();
+  document.body.removeChild(link);
+};
 </script>
 
 <template>
