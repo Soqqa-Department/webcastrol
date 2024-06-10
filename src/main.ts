@@ -9,6 +9,7 @@ import App from './App.vue'
 import router from './router'
 
 import PrimeVue from 'primevue/config';
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
 const app = createApp(App)
 
@@ -32,6 +33,7 @@ const i18n = createI18n<[MessageSchema], 'uz'>({
 app
     .use(router)
     .use(PrimeVue)
-    .use(i18n)
+    .use(autoAnimatePlugin)
+    .use(i18n);
 
 app.mount('#app')
