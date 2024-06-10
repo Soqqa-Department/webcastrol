@@ -1,6 +1,13 @@
 <script setup lang="ts">
+import Button from 'primevue/button';
 </script>
 
 <template>
-  <h2>Home</h2>
+  <main class="text-white">
+    <h2>{{ $t('nav.header') }}</h2>
+    <Button :label="$t('nav.buttons.search')" />
+  </main>
 </template>
+
+<style scoped>
+</style>

@@ -1,5 +1,10 @@
+:root{
+  --custom-background: #0D3F36;
+}
 
 body {
+  background-color: var(--custom-background);
+  
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
