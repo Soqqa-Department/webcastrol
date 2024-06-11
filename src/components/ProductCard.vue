@@ -49,7 +49,9 @@ const handleClick = () => {
         image-style="object-fit: contain; height:90%; width: 90%;"
         image-class="my-2 center"
         :pt="{
-          button: {'aria-label': 'product', 'class': 'border-round'},
+          button: {'aria-label': 'product', 
+                   'class': 'border-round', 
+                   'style': 'background-color: rgba(0,0,0,0.1)'},
           icon: {'aria-label': 'product'}
         }"
       />
