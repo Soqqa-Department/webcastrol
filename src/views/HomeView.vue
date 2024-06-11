@@ -48,7 +48,7 @@ const handleFocus = () => {
         <InputText
           v-model="searchQuery"
           :placeholder="$t('nav.buttons.search')"
-          @focus="handleFocus"
+          @focus.prevent="handleFocus"
           class="w-12 overflow-hidden"
         />
       </IconField>
