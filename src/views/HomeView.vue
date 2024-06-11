@@ -18,6 +18,14 @@ const handleClick = (event: any) => {
   }
 }
 
+const handleFocus = () => {
+  window.scrollTo({
+  top: 0,
+  left: 0,
+  behavior: "smooth",
+}); 
+}
+
 </script>
 
 <template>
@@ -25,8 +33,13 @@ const handleClick = (event: any) => {
     class="w-full flex flex-column align-items-center text-white gap-5"
     @click="handleClick"
   >
-    <nav>
-      <h2>{{ $t('nav.header') }}</h2>
+    <nav class="flex flex-column align-items-center">
+      <!-- <h2>{{ $t('nav.header') }}</h2> -->
+      <img
+        src="/title.webp"
+        alt="logo"
+        class="w-10"
+      >
       <IconField
         icon-position="left"
       >
@@ -34,7 +47,7 @@ const handleClick = (event: any) => {
         <InputText
           v-model="searchQuery"
           :placeholder="$t('nav.buttons.search')"
-          class="w-20rem"
+          @focus="handleFocus"
         />
       </IconField>
     </nav>
