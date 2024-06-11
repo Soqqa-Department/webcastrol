@@ -15,6 +15,8 @@ const props = defineProps({
 })
 
 import { ref } from 'vue'
+import { publicUrl } from '@/consts';
+import Image from 'primevue/image';
 
 const product = ref()
 const emit = defineEmits(['inFocus'])
@@ -31,24 +33,29 @@ const handleClick = () => {
              align-items-center jusitfy-content-between
              gap-3 py-2 overflow-hidden
              border-round
-             border-primary
-             hover:border-white
+             border-green-800
+             hover:border-green-600
              "
       ref="product"
       @click="handleClick"
       aria-label="product"
     >
-      <!-- photo container -->
-      <div class="w-9 overflow-hidden text-center pt-2">
-        <img
-          :src="`/images/${props.image}`"
-          :alt="`img_${name}`"
-          class="productImage"
-          aria-label="product"
-        >
-      </div>
+      <Image
+        :src="`${publicUrl}/images/${props.image}`"
+        :alt="`img_${name}`"
+        class="w-10 h-full overflow-hidden text-center mt-2"
+        aria-label="product"
+        preview
+        image-style="object-fit: contain; height:90%; width: 90%;"
+        image-class="my-2 center"
+        :pt="{
+          button: {'aria-label': 'product', 'class': 'border-round'},
+          icon: {'aria-label': 'product'}
+        }"
+      />
+
       <p
-        class="m-0 text-center w-10"
+        class="m-0 text-center w-10 mb-2" 
         aria-label="product"
       >
         {{ props.name }}
@@ -58,20 +65,12 @@ const handleClick = () => {
 </template>
 
 <style scoped>
-.productImage{
-    object-fit: contain;
-    width: 90%;
-    height: 90%;
-}
-
 .card:hover{
     transition: .3s ease;
-    border-color: white;
 }
 
-.card:hover .productImage{
+.card:hover .p-image{
   transform: scale(1.05);
   transition: .3s ease;
 }
-
-</style>
+</style>  

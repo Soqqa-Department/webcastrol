@@ -1,0 +1,1 @@
+export const publicUrl = "https://raw.githubusercontent.com/mmnvb/webcastrol/main/public"

@@ -5,6 +5,7 @@ import initialData from '@/data/products.json'
 import ProductCard from '@/components/ProductCard.vue'
 import { useWebAppMainButton } from 'vue-tg'
 import { useI18n } from "vue-i18n";
+import { publicUrl } from '@/consts';
 
 const props = defineProps({
     query: {
@@ -27,7 +28,7 @@ const suggestions = computed(()=>{
 const handleFocus = (item: Object) => {
   selectedProduct.value = item
   mainButton.setMainButtonText(t('buttons.download'))
-  mainButton.mainButtonColor.value = "#0EA5E9"
+  mainButton.mainButtonColor.value = "#157347"
   mainButton.showMainButton()
 }
 
@@ -37,7 +38,7 @@ mainButton.onMainButtonClicked(()=>{
 })
 
 const openPdf = async (filename: string) => {
-  const pdfUrl = `https://raw.githubusercontent.com/mmnvb/webcastrol/main/public/pdf/${filename}`
+  const pdfUrl = `${publicUrl}/pdf/${filename}`
 
   const link = document.createElement('a');
   link.href = pdfUrl;

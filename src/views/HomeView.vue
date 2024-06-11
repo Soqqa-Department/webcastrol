@@ -33,24 +33,29 @@ const handleFocus = () => {
     class="w-full flex flex-column align-items-center text-white gap-5"
     @click="handleClick"
   >
-    <nav class="flex flex-column align-items-center">
+    <nav class="w-10 flex align-items-center justify-content-around">
       <!-- <h2>{{ $t('nav.header') }}</h2> -->
       <img
-        src="/title.webp"
+        src="/log.webp"
         alt="logo"
-        class="w-10"
+        class="h-3rem"
       >
+
       <IconField
         icon-position="left"
+        class="w-9 overflow-hidden"
       >
         <InputIcon class="pi pi-search" />
         <InputText
           v-model="searchQuery"
           :placeholder="$t('nav.buttons.search')"
           @focus="handleFocus"
+          class="w-12 overflow-hidden"
         />
       </IconField>
     </nav>
+
+
 
     <div ref="productContainer">
       <DataContainer
