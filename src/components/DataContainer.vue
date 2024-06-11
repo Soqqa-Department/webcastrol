@@ -37,17 +37,18 @@ mainButton.onMainButtonClicked(()=>{
 })
 
 const openPdf = async (filename: string) => {
-  const pdfUrl = `https://drive.google.com/file/d/1pTBCGowqXhymWh1j7MYxNRVFee5V2xjB/view`
+  const pdfUrl = `https://raw.githubusercontent.com/mmnvb/webcastrol/main/public/pdf/${filename}`
 
-  const link = document.createElement('a')
-  link.href = pdfUrl
-  link.download = filename
-    
+  const link = document.createElement('a');
+  link.href = pdfUrl;
+  link.download = `${new Date().getTime()}_${filename}`
+  link.target = '_target';
+
   // Программа клик по ссылке, чтобы открыть PDF
   document.body.appendChild(link); // необходимо для Firefox
   link.click();
   document.body.removeChild(link);
-};
+}
 </script>
 
 <template>
