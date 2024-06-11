@@ -33,8 +33,7 @@ const handleFocus = () => {
     class="w-full flex flex-column align-items-center text-white gap-5"
     @click="handleClick"
   >
-    <nav class="w-10 flex align-items-center justify-content-around">
-      <!-- <h2>{{ $t('nav.header') }}</h2> -->
+    <nav class="w-10 flex align-items-center justify-content-around mt-3">
       <img
         src="/log.webp"
         alt="logo"

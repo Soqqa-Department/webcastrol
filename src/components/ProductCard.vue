@@ -75,4 +75,8 @@ const handleClick = () => {
   transform: scale(1.05);
   transition: .3s ease;
 }
+
+/* .doubleProduct{
+  width: 9rem !important;
+} */
 </style>  
