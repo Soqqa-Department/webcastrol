@@ -27,17 +27,19 @@ const handleClick = () => {
 <template>
   <div>
     <div
-      class="card border-1 w-9rem flex flex-column 
+      class="card border-2 w-17rem h-17rem flex flex-column 
              align-items-center jusitfy-content-between
              gap-3 py-2 overflow-hidden
              border-round
+             border-primary
+             hover:border-white
              "
       ref="product"
       @click="handleClick"
       aria-label="product"
     >
       <!-- photo container -->
-      <div class="w-8rem h-10rem overflow-hidden">
+      <div class="w-9 overflow-hidden text-center pt-2">
         <img
           :src="`/images/${props.image}`"
           :alt="`img_${name}`"
@@ -45,7 +47,10 @@ const handleClick = () => {
           aria-label="product"
         >
       </div>
-      <p class="m-0">
+      <p
+        class="m-0 text-center w-10"
+        aria-label="product"
+      >
         {{ props.name }}
       </p>
     </div>
@@ -55,13 +60,18 @@ const handleClick = () => {
 <style scoped>
 .productImage{
     object-fit: contain;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
 }
 
 .card:hover{
-    transform: scale(1.05);
     transition: .3s ease;
+    border-color: white;
+}
+
+.card:hover .productImage{
+  transform: scale(1.05);
+  transition: .3s ease;
 }
 
 </style>
